@@ -16,7 +16,6 @@
 #include <vm.h>
 #include <syscall.h>
 #include <version.h>
-#include <stdlib.h>
 
 #include "../include/hello.h"
 

@@ -18,9 +18,13 @@
 #include "opt-sfs.h"
 #include "opt-net.h"
 
+#include "../include/hello.h"
+
 #define _PATH_SHELL "/bin/sh"
 
 #define MAXMENUARGS  16
+
+int dValue = 0;
 
 void
 getinterval(time_t s1, u_int32_t ns1, time_t s2, u_int32_t ns2,
@@ -275,9 +279,53 @@ static
 int
 cmd_dbflags(int nargs, char **args)
 {
-	showmenu("OS/161 Debug flags", dbfdisplay);
+	(void)nargs;
+	(void)args;
 
-	kprintf("Current value of dbflags is %d\n", );
+	showmenu("OS/161 Debug flags", dbfdisplay);
+	kprintf("Current value of dbflags is %d\n", dValue);
+}
+
+static
+int
+cmd_df(int nargs, char **args)
+{
+	(void)nargs;
+
+	int flagNum;
+	char *state;	
+
+	flagNum = atoi(args[1]);
+	flagNum = flagNum - 1;
+	state = args[2];
+
+	kprintf("intoi: %d, state: %s\n", flagNum, state);
+
+	
+	//Need to check if flagNum and state are in appropriate ranges.
+
+	/*
+	if((flagNum<1) || (flagNum>12))
+	{
+		kprintf("1 Wrong command.\n");
+	}
+	*/
+	if(!strcmp(state, "on"))
+	{
+		kprintf("add success!\n");
+		dValue=hello(&dValue, 1 << flagNum, 1);
+	}
+	else if(!strcmp(state, "off"))
+	{
+		kprintf("subtract success!\n");
+		dValue=hello(&dValue, 1 << flagNum, 0);
+	}
+	else
+	{
+		kprintf("Usage: df nr on/off \n");
+	}
+
+
 }
 
 static
@@ -511,6 +559,7 @@ static struct {
 	{ "s",		cmd_shell },
 	{ "p",		cmd_prog },
 	{ "dbflags",	cmd_dbflags },
+	{ "df",		cmd_df },
 	{ "mount",	cmd_mount },
 	{ "unmount",	cmd_unmount },
 	{ "bootfs",	cmd_bootfs },
