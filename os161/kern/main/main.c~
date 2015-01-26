@@ -16,6 +16,7 @@
 #include <vm.h>
 #include <syscall.h>
 #include <version.h>
+#include <stdlib.h>
 
 #include "../include/hello.h"
 
@@ -72,7 +73,7 @@ boot(void)
 	kprintf("AAA's system version %s (%s #%d)\n", 
 		GROUP_VERSION, buildconfig, buildversion);
 	kprintf("\n");
-	hello();
+	
 	ram_bootstrap();
 	scheduler_bootstrap();
 	thread_bootstrap();
@@ -80,7 +81,7 @@ boot(void)
 	dev_bootstrap();
 	vm_bootstrap();
 	kprintf_bootstrap();
-
+	hello();
 	/* Default bootfs - but ignore failure, in case emu0 doesn't exist */
 	vfs_setbootfs("emu0");
 

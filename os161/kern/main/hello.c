@@ -7,7 +7,7 @@ int hello()
 	kprintf("Hello World AGAIN%d\n",4%3);
 	return 0;
 }
-*/
+
 char decToHex(int arg1)
 {
 	char hex_arr[4];
@@ -34,6 +34,8 @@ char decToHex(int arg1)
 
 	while (arg1 < 16)
 }
+*/
+
 int addHelper(int arg1, int arg2)
 {
 	int result = -1;
@@ -75,6 +77,8 @@ int hello()
 	kprintf("dValue in decimal: %d\n", dValue);
 	kprintf("testing Left shift: %d\n", 1 << 1);
 
+	char *str;
+	str = (char *) kmalloc(15);
 
 
 	return 0;

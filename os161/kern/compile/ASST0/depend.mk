@@ -294,13 +294,6 @@ thread.o: ../../thread/thread.c ../../include/types.h machine/types.h \
   ../../include/curthread.h ../../include/scheduler.h \
   ../../include/addrspace.h ../../include/vm.h machine/vm.h opt-dumbvm.h \
   ../../include/vnode.h opt-synchprobs.h
-main.o: ../../main/main.c ../../include/types.h machine/types.h \
-  ../../include/kern/types.h machine/ktypes.h ../../include/kern/errno.h \
-  ../../include/kern/unistd.h ../../include/lib.h machine/setjmp.h \
-  machine/spl.h ../../include/test.h ../../include/synch.h \
-  ../../include/thread.h machine/pcb.h ../../include/scheduler.h \
-  ../../include/dev.h ../../include/vfs.h ../../include/vm.h machine/vm.h \
-  ../../include/syscall.h ../../include/version.h ../../include/hello.h
 menu.o: ../../main/menu.c ../../include/types.h machine/types.h \
   ../../include/kern/types.h machine/ktypes.h ../../include/kern/errno.h \
   ../../include/kern/unistd.h ../../include/kern/limits.h \
